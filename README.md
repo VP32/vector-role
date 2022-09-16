@@ -1,38 +1,39 @@
-Role Name
+Учебная роль для установки Vector
 =========
 
-A brief description of the role goes here.
+Выполняет установку Vector указанной версии.
 
-Requirements
+Требования
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Предназначена для запуска на CentOS. Проверялась на CentOS 7.
 
-Role Variables
+Переменные роли
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+- vector_version - версия Vector
+- vector_minor_version - минорная версия Vector, обычно 1
 
-Dependencies
+| Переменная | Тип     | Описание                                |
+|------------|---------|-----------------------------------------|
+| vector_version           | string  | Номер версии в формате SemVer, например 0.22.3 |
+| vector_minor_version           | integer | минорная версия Vector, обычно 1 |
+
+
+Зависимости
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Нет.
 
-Example Playbook
+Пример playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
+    - name: Install Vector
+      hosts: vector
+      remote_user: centos
+      tags: vector
       roles:
-         - { role: username.rolename, x: 42 }
+        - vector
 
-License
--------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
