@@ -1,0 +1,15 @@
+---
+- name: Install vector distrib
+  become: true
+  tags: install_distrib
+  ansible.builtin.yum:
+    name:
+      - "https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}\
+      -{{ vector_minor_version }}.{{ ansible_architecture }}.rpm"
+- name: Check vector works correctly
+  ansible.builtin.command: "vector --version"
+  tags: check
+  register: vector_checked
+  failed_when: vector_checked.rc != 0
+  changed_when: vector_checked == 0
+
