@@ -1,4 +1,7 @@
 ---
+- name: Print all available facts
+  ansible.builtin.debug:
+    var: ansible_facts
 - name: Install vector distrib
   become: true
   tags: install_distrib
@@ -12,4 +15,3 @@
   register: vector_checked
   failed_when: vector_checked.rc != 0
   changed_when: vector_checked == 0
-
