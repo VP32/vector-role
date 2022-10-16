@@ -3,6 +3,7 @@ galaxy_info:
   description: Learning role for Vector installation
   company: VP32
   role_name: vectorrole
+  namespace: vp
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
